@@ -3,8 +3,8 @@ import React from "react";
 const Footer = () => {
 
   return (
-    
-    <footer>
+
+    <>
       <footer className="footer position-absolute">
         <div className="row g-0 justify-content-between align-items-center h-100">
           <div className="col-12 col-sm-auto text-center">
@@ -14,7 +14,7 @@ const Footer = () => {
               <span className="d-none d-sm-inline-block mx-1">|</span>
               <br className="d-sm-none" />
               2024 ©
-              <a className="mx-1" href="https://themewagon.com">
+              <a className="mx-1" href="#">
                 Themewagon
               </a>
             </p>
@@ -25,7 +25,8 @@ const Footer = () => {
         </div>
       </footer>
 
-    </footer>
+    </>
+
   );
 };
 
