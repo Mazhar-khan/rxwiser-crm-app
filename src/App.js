@@ -7,7 +7,7 @@ import BusinessInfo from "./pages/BusinessInfo";
 import PractiseLocation from "./pages/PractiseLocation";
 import UserManagement from "./pages/UserManagement";
 import Practioners from "./pages/Practioners";
-//  import Calender from "./pages/calendar/Calender";
+ import Calender from "./pages/calender/Calender";
 // import AddContact from "./pages/add/AddContact";
 import Client from "./pages/client/Client";
 import Shared from "./pages/shared/Shared";
@@ -52,8 +52,8 @@ function App() {
           <Sidebar />
           <div className="content">
             <Routes>
-             {/* <Route path="/" element={<Calender />} />  */}
 
+             <Route path="/" element={<Calender />} />
              {/* <Route path="/add" element={<AddContact />} />  */}
              <Route path="/client" element={<Client />} />
             <Route path="/shared" element={<Shared />} />
@@ -106,4 +106,5 @@ function App() {
 }
 
 export default App;
-//commit from mazhar side
+
+// code deployed from qasim side

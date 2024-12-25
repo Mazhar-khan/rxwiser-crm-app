@@ -482,20 +482,14 @@ const Client = () => {
                                     <div className="row">
                                       <div className="col">
                                         <div className="input-group">
-                                          <input
-                                            className="form-control datetimepicker"
-                                            id="datetimepicker"
-                                            type="text"
-                                            placeholder="dd/mm/yyyy hour : minute"
-                                            data-options='{"enableTime":true,"dateFormat":"d/m/y H:i","disableMobile":true}'
-                                          />
+                                        <input type="date" id="messageDate" className="form-control" />
                                           <div className="input-group-append input-group-addon">
-                                            <span
+                                            {/* <span
                                               className="input-group-text input-group-addon-gray"
                                               id="datetimepicker"
                                             >
                                               <i className="far fa-calendar-alt" />
-                                            </span>
+                                            </span> */}
                                           </div>
                                         </div>
                                         <small>Start</small>
