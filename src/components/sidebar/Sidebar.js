@@ -1,19 +1,28 @@
-import React from "react";
-import { Link, useLocation } from "react-router-dom"; // Import Link and useLocation from react-router-dom
+import { useEffect, useState } from "react";
+import feather from "feather-icons";
 
+import { Link, useLocation } from "react-router-dom";
 const Sidebar = () => {
-  const location = useLocation(); // This will help track the current route
+  const location = useLocation();
 
   // Function to check if a link is active based on the current route
   const isActive = (path) => {
     return location.pathname === path ? "active" : "";
   };
 
+  
+  const [isExpanded] = useState(false);
+
+  useEffect(() => {
+    feather.replace();
+  }, []);
+
+
+
   return (
     <aside>
       <nav className="navbar navbar-vertical navbar-expand-lg">
         <div className="collapse navbar-collapse" id="navbarVerticalCollapse">
-          {/* Scrollbar removed */}
           <div className="navbar-vertical-content">
             <ul className="navbar-nav flex-column" id="navbarVerticalNav">
               <li className="nav-item">
@@ -49,15 +58,18 @@ const Sidebar = () => {
                   >
                     <div className="d-flex align-items-center">
                       <div className="dropdown-indicator-icon-wrapper">
-                        <span className="fas fa-caret-right dropdown-indicator-icon" />
+                        <i
+                          className={`fas fa-caret-right dropdown-indicator-icon ${isExpanded ? "rotate" : ""
+                            }`}
+                        />
                       </div>
-                      <span className="nav-link-icon">
-                        <span data-feather="users" />
+                      <span className="nav-link-icon" >
+                        <i data-feather="users"  style={{ fontSize: '6px' }}/>
                       </span>
                       <span className="nav-link-text">People</span>
-                      <span
+                      <i
                         className="fa-solid fa-circle text-info ms-1 new-page-indicator"
-                        style={{ fontSize: 6 }}
+                        style={{ fontSize: '6px' }}
                       />
                     </div>
                   </Link>

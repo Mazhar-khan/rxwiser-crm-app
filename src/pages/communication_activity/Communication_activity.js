@@ -217,7 +217,7 @@ export default function Communication_activity() {
                             </a>
                             <div className="dashboard-nav-dropdown-menu">
                                 <NavLink
-                                    to="notes.html"
+                                    to="/notes"
                                     className={({ isActive }) =>
                                         `dashboard-nav-dropdown-item ${isActive ? "active" : ""}`
                                     }>
@@ -231,7 +231,7 @@ export default function Communication_activity() {
                                     Files
                                 </NavLink>
                                 <NavLink
-                                    to="correspondence"
+                                    to="/correspondence"
                                     className={({ isActive }) =>
                                         `dashboard-nav-dropdown-item ${isActive ? "active" : ""}`
                                     }>
@@ -270,7 +270,7 @@ export default function Communication_activity() {
                                     New SMS
                                 </NavLink>
                                 <NavLink
-                                    to="new_email"
+                                    to="/new_email"
                                     className={({ isActive }) =>
                                         `dashboard-nav-dropdown-item ${isActive ? "active" : ""}`
                                     }>
@@ -305,7 +305,7 @@ export default function Communication_activity() {
                                     Manage
                                 </NavLink>
                                 <NavLink
-                                    to="admin_notes"
+                                    to="/admin_notes"
                                     className={({ isActive }) =>
                                         `dashboard-nav-dropdown-item ${isActive ? "active" : ""}`
                                     }>

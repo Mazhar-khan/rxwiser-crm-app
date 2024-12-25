@@ -955,3 +955,67 @@ button.close {
     border: 1px dashed var(--phoenix-border-color);
     border-radius: .5rem;
 }
+
+
+
+@media (min-width: 769px) {
+    .content {
+        margin-left: 250px;
+    }
+    .content.collapsed {
+        margin-left: 70px;
+    }
+}
+
+  
+/* Default to hide the navbar-toggler on desktop screens */
+.navbar-toggler {
+    display: none !important;
+}
+
+/* Show the navbar-toggler on mobile screens (below 992px) */
+@media (max-width: 991.98px) {
+    .navbar-toggler {
+        display: block !important;
+    }
+}
+.navbar-top .navbar-toggler {
+    margin-left: 0.5rem;
+}
+
+.export-options {
+    float: left;
+    display: flex;
+    gap: 10px;
+}
+
+.export-options button {
+    margin: 0;
+}
+
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.dropdown-indicator-icon-wrapper {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+  }
+  
+  .dropdown-indicator-icon {
+    transition: transform 0.3s ease;
+    font-size: 12px;
+  }
+  
+  .dropdown-indicator-icon.rotate {
+    transform: rotate(90deg);
+  }
+  
+  .new-page-indicator {
+    font-size: 6px; /* Smaller size specifically for the new-page indicator */
+    color: #17a2b8; /* Bootstrap text-info color */
+  }
+  

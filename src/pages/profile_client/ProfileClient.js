@@ -170,7 +170,7 @@ const ProfileClient = () => {
                                 </NavLink>
 
                                 <NavLink
-                                    to="/insurance" className={({ isActive }) =>
+                                    to="insurance.html" className={({ isActive }) =>
                                         `dashboard-nav-dropdown-item ${isActive ? "active" : ""}`
                                     }>
                                     Insurance
@@ -202,7 +202,7 @@ const ProfileClient = () => {
                             </a>
                             <div className="dashboard-nav-dropdown-menu">
                                 <NavLink
-                                    to="/notes"
+                                    to="notes.html"
                                     className={({ isActive }) =>
                                         `dashboard-nav-dropdown-item ${isActive ? "active" : ""}`
                                     }>
@@ -290,7 +290,7 @@ const ProfileClient = () => {
                                     Manage
                                 </NavLink>
                                 <NavLink
-                                    to="admin_notes"
+                                    to="/admin_notes"
                                     className={({ isActive }) =>
                                         `dashboard-nav-dropdown-item ${isActive ? "active" : ""}`
                                     }>
@@ -316,11 +316,10 @@ const ProfileClient = () => {
                 </div>
                 <div className="dashboard-app">
                     <header className="dashboard-toolbar">
-                        <a href="#!" className="menu-toggle">
+                        <a href="#!" className="menu-toggle" onClick={toggleSidebar}>
                             <i className="fas fa-bars" />
                         </a>
-                        {/* <a href="#" class="brand-logo"><i class="fas fa-anchor"></i> <span>BRAND</span></a>
-     */}
+
                     </header>
                     <div className="dashboard-content">
                         <div className="card">

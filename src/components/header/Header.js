@@ -22,7 +22,7 @@ const Header = () => {
                         <a className="navbar-brand me-1 me-sm-3" href="index.html">
                             <div className="d-flex align-items-center">
                                 <div className="d-flex align-items-center">
-                                    <h5 className="logo-text ms-2 d-none d-sm-block fa-9">
+                                    <h5 className="logo-text ms-2 d-none d-sm-block">
                                         Medical App
                                     </h5>
                                 </div>
