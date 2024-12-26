@@ -43,9 +43,7 @@ import CreateInvoice from "./pages/create_invoice/CreateInvoice";
 import PaymentReceived from "./pages/payment_received/PaymentReceived";
 
 function App() {
-
   return (
-    
     <Router>
       <div className="app">
         <Header />
