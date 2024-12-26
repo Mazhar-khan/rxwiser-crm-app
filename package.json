@@ -6,10 +6,12 @@
     "@fullcalendar/daygrid": "^6.1.15",
     "@fullcalendar/react": "^6.1.15",
     "@fullcalendar/timegrid": "^6.1.15",
+    "axios": "^1.7.9",
     "cra-template": "1.2.0",
     "feather-icons": "^4.29.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-js-loader": "^0.1.3",
     "react-router-dom": "^7.0.2",
     "react-scripts": "5.0.1",
     "reactstrap": "^9.2.3"
