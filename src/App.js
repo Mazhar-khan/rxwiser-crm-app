@@ -41,6 +41,7 @@ import Insurance from "./pages/insurance/Insurance";
 import Invoices from "./pages/invoices/Invoices";
 import CreateInvoice from "./pages/create_invoice/CreateInvoice";
 import PaymentReceived from "./pages/payment_received/PaymentReceived";
+import Practitioner from "./pages/practitioner/Practitioner";
 
 function App() {
   return (
@@ -51,10 +52,10 @@ function App() {
           <Sidebar />
           <div className="content">
             <Routes>
-
              <Route path="/" element={<Calender />} />
              {/* <Route path="/add" element={<AddContact />} />  */}
-             <Route path="/client" element={<Client />} />
+            <Route path="/client" element={<Client />} />
+            <Route path="/practitioner" element={<Practitioner />} />
             <Route path="/shared" element={<Shared />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/referrers" element={<Referrer />} />

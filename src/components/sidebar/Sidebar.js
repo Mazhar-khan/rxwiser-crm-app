@@ -10,14 +10,11 @@ const Sidebar = () => {
     return location.pathname === path ? "active" : "";
   };
 
-  
   const [isExpanded] = useState(false);
 
   useEffect(() => {
     feather.replace();
   }, []);
-
-
 
   return (
     <aside>
@@ -50,7 +47,15 @@ const Sidebar = () => {
                 <div className="nav-item-wrapper">
                   <Link
                     to="#nv-home"
-                    className={`nav-link dropdown-indicator label-1 ${isActive("/add") || isActive("/client") || isActive("/shared") || isActive("/contact") || isActive("/referrers") || isActive("/third-party") || isActive("/waitlist")}`}
+                    className={`nav-link dropdown-indicator label-1 ${
+                      isActive("/add") ||
+                      isActive("/client") ||
+                      isActive("/shared") ||
+                      isActive("/contact") ||
+                      isActive("/referrers") ||
+                      isActive("/third-party") ||
+                      isActive("/waitlist")
+                    }`}
                     role="button"
                     data-bs-toggle="collapse"
                     aria-expanded="true"
@@ -59,17 +64,18 @@ const Sidebar = () => {
                     <div className="d-flex align-items-center">
                       <div className="dropdown-indicator-icon-wrapper">
                         <i
-                          className={`fas fa-caret-right dropdown-indicator-icon ${isExpanded ? "rotate" : ""
-                            }`}
+                          className={`fas fa-caret-right dropdown-indicator-icon ${
+                            isExpanded ? "rotate" : ""
+                          }`}
                         />
                       </div>
-                      <span className="nav-link-icon" >
-                        <i data-feather="users"  style={{ fontSize: '6px' }}/>
+                      <span className="nav-link-icon">
+                        <i data-feather="users" style={{ fontSize: "6px" }} />
                       </span>
                       <span className="nav-link-text">People</span>
                       <i
                         className="fa-solid fa-circle text-info ms-1 new-page-indicator"
-                        style={{ fontSize: '6px' }}
+                        style={{ fontSize: "6px" }}
                       />
                     </div>
                   </Link>
@@ -80,12 +86,27 @@ const Sidebar = () => {
                       id="nv-home"
                     >
                       <li className="nav-item">
-                        <a class="nav-link" href="#" data-bs-toggle="modal"
-                          data-bs-target="#exampleModal">
+                        <a
+                          class="nav-link"
+                          href="#"
+                          data-bs-toggle="modal"
+                          data-bs-target="#exampleModal"
+                        >
                           <div class="d-flex align-items-center">
                             <span class="nav-link-text">Add</span>
                           </div>
                         </a>
+                      </li>
+                      <li className="nav-item">
+                        <Link
+                          class="nav-link"
+                          to="/practitioner"
+                          className={`nav-link ${isActive("/practitioner")}`}
+                        >
+                          <div class="d-flex align-items-center">
+                            <span class="nav-link-text">Practitioner</span>
+                          </div>
+                        </Link>
                       </li>
                       <li className="nav-item">
                         <Link
@@ -158,7 +179,13 @@ const Sidebar = () => {
                 <div className="nav-item-wrapper">
                   <Link
                     to="#nv-icons"
-                    className={`nav-link dropdown-indicator label-1 ${isActive("/business_info") || isActive("/practise_location") || isActive("/user_management") || isActive("/select_practitioners") || isActive("/payment_received")}`}
+                    className={`nav-link dropdown-indicator label-1 ${
+                      isActive("/business_info") ||
+                      isActive("/practise_location") ||
+                      isActive("/user_management") ||
+                      isActive("/select_practitioners") ||
+                      isActive("/payment_received")
+                    }`}
                     role="button"
                     data-bs-toggle="collapse"
                     aria-expanded="false"
@@ -195,7 +222,9 @@ const Sidebar = () => {
                       <li className="nav-item">
                         <Link
                           to="/practise_location"
-                          className={`nav-link ${isActive("/practise_location")}`}
+                          className={`nav-link ${isActive(
+                            "/practise_location"
+                          )}`}
                         >
                           <div className="d-flex align-items-center">
                             <span className="nav-link-text">Locations</span>
@@ -208,14 +237,18 @@ const Sidebar = () => {
                           className={`nav-link ${isActive("/user_management")}`}
                         >
                           <div className="d-flex align-items-center">
-                            <span className="nav-link-text">User Management</span>
+                            <span className="nav-link-text">
+                              User Management
+                            </span>
                           </div>
                         </Link>
                       </li>
                       <li className="nav-item">
                         <Link
                           to="/select_practitioners"
-                          className={`nav-link ${isActive("/select_practitioners")}`}
+                          className={`nav-link ${isActive(
+                            "/select_practitioners"
+                          )}`}
                         >
                           <div className="d-flex align-items-center">
                             <span className="nav-link-text">Practitioners</span>
@@ -245,7 +278,9 @@ const Sidebar = () => {
           <button className="btn navbar-vertical-toggle border-0 fw-semibold w-100 white-space-nowrap d-flex align-items-center">
             <span className="uil uil-left-arrow-to-left fs-8" />
             <span className="uil uil-arrow-from-right fs-8" />
-            <span className="navbar-vertical-footer-text ms-2">Collapsed View</span>
+            <span className="navbar-vertical-footer-text ms-2">
+              Collapsed View
+            </span>
           </button>
         </div>
       </nav>
