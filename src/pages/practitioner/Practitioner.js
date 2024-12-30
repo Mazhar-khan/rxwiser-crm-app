@@ -1,36 +1,31 @@
 import React, { useState, useEffect } from "react";
-import ApiService from "../services/api-service/ApiService";
-import SpinningLoader from "../services/spinning-loader/SpinningLoader";
+import ApiService from "../../services/api-service/ApiService";
+import SpinningLoader from "../../services/spinning-loader/SpinningLoader";
 
-const PractiseLocation = () => {
+const Practitioner = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [getLocation, setGetLocation] = useState([]);
+  const [getPractitioners, setGetPractitioners] = useState([]);
   const [error, setError] = useState("");
   const [isEdit, setIsEdit] = useState(false);
   const [editObj, setEditObj] = useState(null);
-  const [addLocFormData, setAddLocFormData] = useState({
-    hospital_id: 6,
-    name: "",
-    location_type: "",
-    email: "",
-    address: "",
-    locality: "",
-    post_code: "",
-    phone: null,
-    town: "",
-    fax: "",
-    extra_invoice_text: "",
-    location_notes: "",
-    color_code: "#ffffff",
-    active: 1,
-    default_status: 1,
-  });
+  const [addPractitionerFormData, setAddPractitionerFormData] = useState({
+    type:"",
+    firstname:"",
+    middlename:"",
+    lastname:"",
+    email:"",
+    password:"",
+    phone_number:"",
+    isactive:1,
+    hospital_id:4
+});
+
 
   const handleFormValues = async (e) => {
     try {
       const { name, value } = e.target;
       console.log(name, value);
-      setAddLocFormData((prevData) => ({
+      setAddPractitionerFormData((prevData) => ({
         ...prevData,
         [name]: value,
       }));
@@ -40,7 +35,7 @@ const PractiseLocation = () => {
   const saveLocation = async () => {
     try {
       setIsLoading(true);
-      const data = await ApiService("post", "locations/create", addLocFormData);
+      const data = await ApiService("post", "practitioners/create", addPractitionerFormData);
       fetchData();
       console.log(data);
       setIsLoading(false);
@@ -52,8 +47,8 @@ const PractiseLocation = () => {
   const fetchData = async () => {
     try {
       setIsLoading(true);
-      const data = await ApiService("GET", "locations?hospital_id=6");
-      setGetLocation(data);
+      const data = await ApiService("GET", "practitioners/getall?hospital_id=4&user_type=practitioner");
+      setGetPractitioners(data);
     } catch (err) {
       setError(err.message || "An error occurred");
     } finally {
@@ -67,8 +62,8 @@ const PractiseLocation = () => {
       setIsLoading(true);
       await ApiService(
         "PUT",
-        `locations/update/${id}`,
-        addLocFormData,
+        `practitioners/update/${id}`,
+        addPractitionerFormData,
       );
       setIsLoading(false);
     } catch (error) {
@@ -91,7 +86,7 @@ const PractiseLocation = () => {
     try {
       const id = obj.id;
       setIsLoading(true);
-      const data = await ApiService("delete", `locations/delete/${id}`);
+      const data = await ApiService("delete", `practitioners/delete/${id}`);
       console.log("data", data);
       fetchData();
     } catch (error) {
@@ -109,7 +104,7 @@ const PractiseLocation = () => {
         <div className="panel panel-default">
           <div className="panel-body">
             <div style={{ marginTop: "-3%" }}>
-              <div className="form-section-titles mt20">Locations</div>
+              <div className="form-section-titles mt20">Practitioner</div>
             </div>
             <hr />
             {/* Show All */}
@@ -132,7 +127,7 @@ const PractiseLocation = () => {
                             data-bs-target="#topSlideOutModal"
                           >
                             <i className="fa fa-add mr5" />
-                            <span>ADD LOCATION</span>
+                            <span>ADD PRACTITIONER </span>
                           </button>
                         </div>
                       </div>
@@ -162,7 +157,7 @@ const PractiseLocation = () => {
                 </div>
                 <div className="panel-group mt-4">
                   <div className="table-caption text-center text-uppercase">
-                    Location List
+                  Practitioner List
                   </div>
                   <div id="tableExample">
                     <div
@@ -185,31 +180,19 @@ const PractiseLocation = () => {
                               className="sort border-top border-translucent"
                               data-sort="email"
                             >
-                              ADDRESS
+                              Email
                             </th>
                             <th
                               className="sort border-top border-translucent desc"
                               data-sort="locality"
                             >
-                              LOCALITY
+                              Phone Number
                             </th>
                             <th
                               className="sort border-top border-translucent desc"
                               data-sort="town"
                             >
-                              TOWN
-                            </th>
-                            <th
-                              className="sort border-top border-translucent desc"
-                              data-sort="colour"
-                            >
-                              COLOUR
-                            </th>
-                            <th
-                              className="sort border-top border-translucent desc"
-                              data-sort="default"
-                            >
-                              DEFAULT
+                              Active
                             </th>
                             <th
                               className="sort text-end align-middle pe-0 border-top border-translucent"
@@ -236,32 +219,23 @@ const PractiseLocation = () => {
                             </>
                           ) : (
                             <>
-                              {getLocation.map((obj, index) => {
+                              {getPractitioners.map((obj, index) => {
                                 return (
                                   <tr key={index}>
                                     <td className="align-middle ps-3 name">
-                                      {obj.name}
+                                      {obj.firstname + " " + obj.middlename + " " + obj.lastname}
                                     </td>
                                     <td className="align-middle email">
-                                      {obj.address}
+                                      {obj.email}
                                     </td>
                                     <td className="align-middle age">
                                       {" "}
-                                      {obj.locality}
+                                      {obj.phone_number}
                                     </td>
                                     <td className="align-middle ps-3 name">
-                                      {obj.post_code}
+                                      {obj.is_active}
                                     </td>
-                                    <td className="align-middle email">
-                                      <span style={{ color: "red" }}>
-                                        {" "}
-                                        {obj.color_code}{" "}
-                                      </span>
-                                    </td>
-                                    <td className="align-middle age">
-                                      {" "}
-                                      {obj.default_status}
-                                    </td>
+
                                     <td className="align-middle white-space-nowrap text-end pe-0">
                                       <div className="btn-reveal-trigger position-static">
                                         <button
@@ -299,8 +273,8 @@ const PractiseLocation = () => {
                                             onClick={() => {
                                               setIsEdit(true);
                                               setEditObj(obj);
-                                              setAddLocFormData({
-                                              ...addLocFormData,
+                                              setAddPractitionerFormData({
+                                              ...addPractitionerFormData,
                                               ...obj,
                                             });
                                             }}
@@ -352,7 +326,7 @@ const PractiseLocation = () => {
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title" id="topSlideOutModalLabel">
-                Location
+              Practitioner
               </h5>
             </div>
             <div
@@ -380,31 +354,67 @@ const PractiseLocation = () => {
                             style={{}}
                           >
                             <div className="internal-title text-uppercase">
-                              Add Location
+                              Add Practitioner
                             </div>
                             <div className="well well-form-dotted">
                               <div className="form-block form-block-lg mb20 mt20 pl10 pr10">
                                 <div className="form-group row">
                                   <label
-                                    htmlFor="Name"
+                                    htmlFor="firstname"
                                     className="col-sm-4 col-12 col-form-label pr0"
                                   >
-                                    Name:
+                                    First Name:
                                   </label>
                                   <div className="col-sm-8 col-12">
                                     <input
                                       type="text"
                                       className="valid form-control "
-                                      name="name"
-                                      id="Name"
+                                      name="firstname"
+                                      id="firstname"
                                       onChange={handleFormValues}
-                                      value={addLocFormData.name}
+                                      value={addPractitionerFormData.firstname}
                                     />
                                   </div>
                                 </div>
                                 <div className="form-group row">
                                   <label
-                                    htmlFor="Name"
+                                    htmlFor="middlename"
+                                    className="col-sm-4 col-12 col-form-label pr0"
+                                  >
+                                   Middle Name:
+                                  </label>
+                                  <div className="col-sm-8 col-12">
+                                    <input
+                                      type="text"
+                                      className="valid form-control "
+                                      name="middlename"
+                                      id="middlename"
+                                      onChange={handleFormValues}
+                                      value={addPractitionerFormData.middlename}
+                                    />
+                                  </div>
+                                </div>
+                                <div className="form-group row">
+                                  <label
+                                    htmlFor="lastname"
+                                    className="col-sm-4 col-12 col-form-label pr0"
+                                  >
+                                  Last Name:
+                                  </label>
+                                  <div className="col-sm-8 col-12">
+                                    <input
+                                      type="text"
+                                      className="valid form-control "
+                                      name="lastname"
+                                      id="lastname"
+                                      onChange={handleFormValues}
+                                      value={addPractitionerFormData.lastname}
+                                    />
+                                  </div>
+                                </div>
+                                <div className="form-group row">
+                                  <label
+                                    htmlFor="type"
                                     className="col-sm-4 col-12 col-form-label pr0"
                                   >
                                     Location Type::
@@ -414,34 +424,26 @@ const PractiseLocation = () => {
                                     <select
                                       className="form-select"
                                       aria-label="Default select example"
-                                      name="location_type"
+                                      name="type"
                                       style={{
                                         fontSize: 12,
                                         color: "#707f94",
                                       }}
-                                      value={addLocFormData.location_type}
+                                      value={addPractitionerFormData.type}
                                       onChange={handleFormValues}
                                     >
+
                                       <option value="">
                                         Select option
                                       </option>
-                                      <option value="location 1">
-                                        location 1
+                                      <option value="practitioner">
+                                      Practitioner
                                       </option>
-                                      <option value="location 2">
-                                        location 2
+                                      <option value="hospital">
+                                      Hospital
                                       </option>
-                                      <option value="location 3">
-                                        location 3
-                                      </option>
-                                      <option value="location 4">
-                                        location 4
-                                      </option>
-                                      <option value="location 5">
-                                        location 5
-                                      </option>
-                                      <option value="location 6">
-                                        location 6
+                                      <option value="patient">
+                                      Patient
                                       </option>
                                     </select>
                                   </div>
@@ -460,85 +462,31 @@ const PractiseLocation = () => {
                                       name="email"
                                       id="email"
                                       onChange={handleFormValues}
-                                      value={addLocFormData.email}
+                                      value={addPractitionerFormData.email}
                                     />
                                   </div>
                                 </div>
                                 <div className="form-group row">
                                   <label
-                                    htmlFor="address"
+                                    htmlFor="password"
                                     className="col-sm-4 col-12 col-form-label pr0"
                                   >
-                                    Address:
+                                    Password:
                                   </label>
                                   <div className="col-sm-8 col-12">
                                     <input
-                                      type="text"
+                                      type="password"
                                       className="valid form-control "
-                                      name="address"
-                                      id="Address"
+                                      name="password"
+                                      id="password"
                                       onChange={handleFormValues}
-                                      value={addLocFormData.address}
+                                      value={addPractitionerFormData.password}
                                     />
                                   </div>
                                 </div>
                                 <div className="form-group row">
                                   <label
-                                    htmlFor="Suburb"
-                                    className="col-sm-4 col-12 col-form-label pr0"
-                                  >
-                                    Suburb:
-                                  </label>
-                                  <div className="col-sm-8 col-12">
-                                    <input
-                                      type="text"
-                                      className="valid form-control "
-                                      name="locality"
-                                      id="Suburb"
-                                      onChange={handleFormValues}
-                                      value={addLocFormData.locality}
-                                    />
-                                  </div>
-                                </div>
-                                <div className="form-group row">
-                                  <label
-                                    htmlFor="State"
-                                    className="col-sm-4 col-12 col-form-label pr0"
-                                  >
-                                    State:
-                                  </label>
-                                  <div className="col-sm-8 col-12">
-                                    <input
-                                      type="text"
-                                      className="valid form-control "
-                                      name="town"
-                                      id="State"
-                                      onChange={handleFormValues}
-                                      value={addLocFormData.town}
-                                    />
-                                  </div>
-                                </div>
-                                <div className="form-group row">
-                                  <label
-                                    htmlFor="Postcode"
-                                    className="col-sm-4 col-12 col-form-label pr0"
-                                  >
-                                    Postcode:
-                                  </label>
-                                  <div className="col-sm-8 col-12">
-                                    <input
-                                      type="text"
-                                      className="valid form-control "
-                                      name="post_code"
-                                      id="Postcode"
-                                      onChange={handleFormValues}
-                                      value={addLocFormData.post_code}
-                                    />
-                                  </div>
-                                </div>
-                                <div className="form-group row">
-                                  <label
-                                    htmlFor="Phone"
+                                    htmlFor="phone_number"
                                     className="col-sm-4 col-12 col-form-label pr0"
                                   >
                                     Phone:
@@ -547,119 +495,11 @@ const PractiseLocation = () => {
                                     <input
                                       type="text"
                                       className="valid form-control "
-                                      name="phone"
-                                      id="Phone"
+                                      name="phone_number"
+                                      id="phone_number"
                                       onChange={handleFormValues}
-                                      value={addLocFormData.phone}
+                                      value={addPractitionerFormData.phone_number}
                                     />
-                                  </div>
-                                </div>
-                                <div className="form-group row">
-                                  <label
-                                    htmlFor="Fax"
-                                    className="col-sm-4 col-12 col-form-label pr0"
-                                  >
-                                    Fax:
-                                  </label>
-                                  <div className="col-sm-8 col-12">
-                                    <input
-                                      type="text"
-                                      className="valid form-control "
-                                      name="fax"
-                                      id="Fax"
-                                      value={addLocFormData.fax}
-                                      onChange={handleFormValues}
-                                    />
-                                  </div>
-                                </div>
-                                <div className="form-group row">
-                                  <label
-                                    htmlFor="Extra Invoice Text"
-                                    className="col-sm-4 col-12 col-form-label pr0"
-                                  >
-                                    Extra Invoice Text:
-                                  </label>
-                                  <div className="col-sm-8 col-12">
-                                    <textarea
-                                      className="form-control"
-                                      data-val="true"
-                                      data-val-maxlength="The field Address must be a string or array type with a maximum length of '255'."
-                                      data-val-maxlength-max={255}
-                                      id="AddressView_Address"
-                                      maxLength={255}
-                                      name="extra_invoice_text"
-                                      rows={2}
-                                      onChange={handleFormValues}
-                                      value={addLocFormData.extra_invoice_text}
-                                    />
-                                  </div>
-                                </div>
-                                <div className="form-group row mt-4">
-                                  <label
-                                    htmlFor="Fax"
-                                    className="col-sm-4 col-12 col-form-label pr0"
-                                  >
-                                    Location Notes:
-                                  </label>
-                                  <div className="col-sm-8 col-12">
-                                    <textarea
-                                      className="form-control"
-                                      data-val="true"
-                                      data-val-maxlength="The field Address must be a string or array type with a maximum length of '255'."
-                                      data-val-maxlength-max={255}
-                                      id="AddressView_Address"
-                                      maxLength={255}
-                                      name="location_notes"
-                                      rows={2}
-                                      onChange={handleFormValues}
-                                      value={addLocFormData.location_notes}
-                                    />
-                                  </div>
-                                </div>
-                                <div className="form-group row mt-4">
-                                  <label
-                                    htmlFor="Fax"
-                                    className="col-sm-4 col-12 col-form-label pr0"
-                                  >
-                                    Active:
-                                  </label>
-                                  <div className="col-sm-8 col-12">
-                                    <div className="form-group">
-                                      <div className="form-check form-switch">
-                                        <input
-                                          className="form-check-input"
-                                          type="checkbox"
-                                          role="switch"
-                                          id="switchClient"
-                                          name="active"
-                                          onChange={handleFormValues}
-                                          value={addLocFormData.active}
-                                        />
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="form-group row mt-2">
-                                  <label
-                                    htmlFor="Fax"
-                                    className="col-sm-4 col-12 col-form-label pr0"
-                                  >
-                                    Default:
-                                  </label>
-                                  <div className="col-sm-8 col-12">
-                                    <div className="form-group">
-                                      <div className="form-check form-switch">
-                                        <input
-                                          className="form-check-input"
-                                          type="checkbox"
-                                          role="switch"
-                                          id="switchClient"
-                                          name="default_status"
-                                          onChange={handleFormValues}
-                                          value={addLocFormData.default_status}
-                                        />
-                                      </div>
-                                    </div>
                                   </div>
                                 </div>
                               </div>
@@ -701,4 +541,4 @@ const PractiseLocation = () => {
   );
 };
 
-export default PractiseLocation;
+export default Practitioner;
