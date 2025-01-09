@@ -176,11 +176,11 @@ button,table {
 .has-search {
     position: relative;
   }
-  
+
   .has-search .form-control {
     padding-right: 2.5rem;
   }
-  
+
   .has-search .form-control-feedback {
     position: absolute;
     right: 10px;
@@ -697,10 +697,10 @@ button,table {
 }
 
 .table>thead>tr>th {
-    background: #b9c7d6;
+    /* background: #b9c7d6;
     text-shadow: none;
     border-right: #fff 2px solid;
-    color: #707f94;
+    color: #707f94; */
 }
 
 .formlable  {
@@ -967,7 +967,7 @@ button.close {
     }
 }
 
-  
+
 /* Default to hide the navbar-toggler on desktop screens */
 .navbar-toggler {
     display: none !important;
@@ -1004,18 +1004,19 @@ button.close {
     align-items: center;
     font-size: 12px;
   }
-  
+
   .dropdown-indicator-icon {
     transition: transform 0.3s ease;
     font-size: 12px;
   }
-  
+
   .dropdown-indicator-icon.rotate {
     transform: rotate(90deg);
   }
-  
+
   .new-page-indicator {
     font-size: 6px; /* Smaller size specifically for the new-page indicator */
     color: #17a2b8; /* Bootstrap text-info color */
   }
-  
+
+

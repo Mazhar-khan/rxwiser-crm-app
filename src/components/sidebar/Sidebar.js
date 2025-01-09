@@ -72,7 +72,7 @@ const Sidebar = () => {
                       <span className="nav-link-icon">
                         <i data-feather="users" style={{ fontSize: "6px" }} />
                       </span>
-                      <span className="nav-link-text">People</span>
+                      <span className="nav-link-text">Patient Management</span>
                       <i
                         className="fa-solid fa-circle text-info ms-1 new-page-indicator"
                         style={{ fontSize: "6px" }}
@@ -85,7 +85,7 @@ const Sidebar = () => {
                       data-bs-parent="#navbarVerticalCollapse"
                       id="nv-home"
                     >
-                      <li className="nav-item">
+                      {/* <li className="nav-item">
                         <a
                           class="nav-link"
                           href="#"
@@ -96,19 +96,19 @@ const Sidebar = () => {
                             <span class="nav-link-text">Add</span>
                           </div>
                         </a>
-                      </li>
+                      </li> */}
                       <li className="nav-item">
                         <Link
                           class="nav-link"
-                          to="/practitioner"
-                          className={`nav-link ${isActive("/practitioner")}`}
+                          to="/patient-management/patient"
+                          className={`nav-link ${isActive("/patient-management/patient")}`}
                         >
                           <div class="d-flex align-items-center">
-                            <span class="nav-link-text">Practitioner</span>
+                            <span class="nav-link-text">Patient</span>
                           </div>
                         </Link>
                       </li>
-                      <li className="nav-item">
+                      {/* <li className="nav-item">
                         <Link
                           to="/client"
                           className={`nav-link ${isActive("/client")}`}
@@ -117,8 +117,8 @@ const Sidebar = () => {
                             <span className="nav-link-text">Clients</span>
                           </div>
                         </Link>
-                      </li>
-                      <li className="nav-item">
+                      </li> */}
+                      {/* <li className="nav-item">
                         <Link
                           to="/shared"
                           className={`nav-link ${isActive("/shared")}`}
@@ -127,8 +127,8 @@ const Sidebar = () => {
                             <span className="nav-link-text">Shared</span>
                           </div>
                         </Link>
-                      </li>
-                      <li className="nav-item">
+                      </li> */}
+                      {/* <li className="nav-item">
                         <Link
                           to="/contact"
                           className={`nav-link ${isActive("/contact")}`}
@@ -137,8 +137,8 @@ const Sidebar = () => {
                             <span className="nav-link-text">Contact</span>
                           </div>
                         </Link>
-                      </li>
-                      <li className="nav-item">
+                      </li> */}
+                      {/* <li className="nav-item">
                         <Link
                           to="/referrers"
                           className={`nav-link ${isActive("/referrers")}`}
@@ -147,8 +147,8 @@ const Sidebar = () => {
                             <span className="nav-link-text">Referrers</span>
                           </div>
                         </Link>
-                      </li>
-                      <li className="nav-item">
+                      </li> */}
+                      {/* <li className="nav-item">
                         <Link
                           to="/third-party"
                           className={`nav-link ${isActive("/third-party")}`}
@@ -157,8 +157,8 @@ const Sidebar = () => {
                             <span className="nav-link-text">Third Parties</span>
                           </div>
                         </Link>
-                      </li>
-                      <li className="nav-item">
+                      </li> */}
+                      {/* <li className="nav-item">
                         <Link
                           to="/waitlist"
                           className={`nav-link ${isActive("/waitlist")}`}
@@ -167,7 +167,7 @@ const Sidebar = () => {
                             <span className="nav-link-text">Waitlist</span>
                           </div>
                         </Link>
-                      </li>
+                      </li> */}
                     </ul>
                   </div>
                 </div>
@@ -208,7 +208,7 @@ const Sidebar = () => {
                       id="nv-icons"
                     >
                       <li className="nav-item">
-                        <Link
+                        {/* <Link
                           to="/business_info"
                           className={`nav-link ${isActive("/business_info")}`}
                         >
@@ -217,21 +217,32 @@ const Sidebar = () => {
                               Business Information
                             </span>
                           </div>
-                        </Link>
+                        </Link> */}
                       </li>
                       <li className="nav-item">
                         <Link
-                          to="/practise_location"
-                          className={`nav-link ${isActive(
-                            "/practise_location"
-                          )}`}
+                          class="nav-link"
+                          to="/settings/practitioner"
+                          className={`nav-link ${isActive("/settings/practitioner")}`}
                         >
-                          <div className="d-flex align-items-center">
-                            <span className="nav-link-text">Locations</span>
+                          <div class="d-flex align-items-center">
+                            <span class="nav-link-text">Practitioner</span>
                           </div>
                         </Link>
                       </li>
                       <li className="nav-item">
+                        <Link
+                          to="/settings/clinics"
+                          className={`nav-link ${isActive(
+                            "/settings/clinics"
+                          )}`}
+                        >
+                          <div className="d-flex align-items-center">
+                            <span className="nav-link-text">Clinics</span>
+                          </div>
+                        </Link>
+                      </li>
+                      {/* <li className="nav-item">
                         <Link
                           to="/user_management"
                           className={`nav-link ${isActive("/user_management")}`}
@@ -242,16 +253,16 @@ const Sidebar = () => {
                             </span>
                           </div>
                         </Link>
-                      </li>
+                      </li> */}
                       <li className="nav-item">
                         <Link
-                          to="/select_practitioners"
+                          to="/settings/roster"
                           className={`nav-link ${isActive(
-                            "/select_practitioners"
+                            "/settings/roster"
                           )}`}
                         >
                           <div className="d-flex align-items-center">
-                            <span className="nav-link-text">Practitioners</span>
+                            <span className="nav-link-text">Roster</span>
                           </div>
                         </Link>
                       </li>
